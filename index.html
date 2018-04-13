@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>rock scissor paper game</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	<div class="container">
+		<section class="title">
+			<h2>Rock Scissor Paper Game</h2>
+		</section>
+		<section class="sign_up">
+			<p><label for="">User Name:</label><input type="text" id="name" required></p>
+			<p><label for="">Email:</label><input type="email" id="email" required></p>
+			<p><label for="">Password:</label><input type="Password" id="password" required></p>
+			<input type="submit" value="register" id="register">
+			<p id="user_message"></p>
+		</section>
+			<hr>
+		<section class="game_area">
+			
+			<div class="you pull_left"><img src="images/0.jpg" alt="" class="center" id="you_img"><span>YOU</span></div>
+			<div class="vs pull_left">VS</div>
+			<div class="computer pull_right"><img src="images/all.jpg" alt="" class="center" id="com_img"><span>COMPUTER</span></div>
+			<div class="clearfix"></div>
+			<div class="message" id="res_message">YOU WIN/LOSE ???</div>
+		</section>
+
+		<section class="your_choice ">
+			<div class="option pull_left">
+				<label for="">Please Select =></label>
+				<select name="" id="you_select">
+					<option value="0">Rock</option>
+					<option value="1">Scissor</option>
+					<option value="2">Paper</option>
+				</select>
+				<input type="button" value="submit" id="submit_choice">
+			</div>
+			<div class="select pull_right">
+				<label for="">You have selected:</label>
+				<span id="selected">Rock</span>
+			</div>
+		</section>
+		<section class="game_result">
+			<p><button id="btn_result">View Game Result</button></p>
+			<div id="result"></div>
+		</section>
+	</div>
+</body>
+<script src="js/control.js"></script>
+</html>

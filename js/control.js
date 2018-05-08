@@ -6,6 +6,14 @@ window.onload = function(){
 	var btn_result = document.getElementById('btn_result');
 	var result_game = document.getElementById('result');
 
+	var username = document.getElementById('name');
+	var email = document.getElementById('email');
+	var password = document.getElementById('password');
+	var name_span = document.getElementById('name_span');
+	var email_span = document.getElementById('email_span');
+	var psd_span = document.getElementById('psd_span');
+
+
 	//use object to easily manipulate data 
 	var option_obj = {
 		"0":"Rock",
@@ -133,7 +141,7 @@ window.onload = function(){
 		}
 	}
 
-
+	//change the picture based on selection
 	function getNew(yourChoice,comChoice){
 		var selectMsg = document.getElementById('selected');
 		var yourImg = document.getElementById('you_img');
@@ -142,7 +150,7 @@ window.onload = function(){
 		yourImg.src = "images/"+yourChoice+".jpg";
 		comImg.src = "images/"+comChoice+".jpg";
 	}
-
+	//get compare results
 	function compare(yourChoice,comChoice){
 		yourChoice=parseInt(yourChoice);
 		comChoice = parseInt(comChoice);
@@ -160,7 +168,7 @@ window.onload = function(){
 			return("You Lose！");
 		}
 	}
-
+	//show game result in a table
 	function showResult(data){
 		var res_str = "<table><tr><th>Result Id</th><th>You Selected</th><th>Computer Selected</th><th>Game Result</th></tr>";
 		for(var i=0;i<data.length;i++){
@@ -169,22 +177,60 @@ window.onload = function(){
 		 res_str += "</table>";
 		 result_game.innerHTML = res_str;
 	}
+	//ask client to enter a username
+	username.onblur = function(){
+		if (username.value ==""){
+			name_span.innerHTML = "Please enter a username.";
+			name_span.style.display = "inline";
+		}else{
+			name_span.innerHTML = "";
+			name_span.style.display = "none";
+		}
+	}
+	//ask client to enter a valid emil
+	email.onblur = function(){
+		if (email.value ==""){
+			email_span.innerHTML = "Please enter an email address.";
+			email_span.style.display = "inline";
+		}else{
+			//use regexp to restrict email pattern
+			var p=/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-]+$/i;
+			var res = p.test(email.value);
+			if(res){
+		 		email_span.innerHTML = "";
+		 		email_span.style.display = "none";
+			}else{
+				email_span.innerHTML = "Please enter a valid email address.";
+				email_span.style.display = "inline";				
+			}
+		}
+	}
+	//ask client to enter a password
+	password.onblur = function(){
+		if (password.value ==""){
+			psd_span.innerHTML = "Please enter a password.";
+			psd_span.style.display = "inline";
+		}else{
+			psd_span.innerHTML = "";
+			psd_span.style.display = "none";
+		}
+	}
 
 	btn_register.onclick = function(){
-		var username = document.getElementById('name').value;
-		var email = document.getElementById('email').value;
-		var password = document.getElementById('password').value;
-		if(username=="" || email==""){
+		//keep all register area filled
+		if((username.value=="" || email.value=="") || (password.value=="")){
 			user_message.innerHTML = "Please fill up all register area";
 		}else{
-			user_message.innerHTML = "Dear \""+username+"\", welcome to play this GAME!";
-			controller.addMetaData(username,email,password);
+			user_message.innerHTML = "Dear \""+username.value+"\", welcome to play this GAME!";
+			//enter register meta data into mdel
+			controller.addMetaData(username.value,email.value,password.value);
 		}
 	};
 
 
 	btn_submit.onclick = function(){
 		var str = user_message.innerText;
+		//get current user as the player
 		var name = str.substring(str.indexOf("\"")+1,str.lastIndexOf("\""));
 
 		var on = controller.checkMetaData(name);
@@ -192,6 +238,7 @@ window.onload = function(){
 			var yourChoice = document.getElementById('you_select').value;
 			var comChoice = Math.floor(Math.random()*3);
 			var res_message = document.getElementById('res_message');
+			//add game result to controler 
 			controller.getNew(yourChoice,comChoice);
 			res_message.innerHTML = controller.compare_res(yourChoice,comChoice);
 			controller.addResData(name,yourChoice,comChoice);
@@ -206,6 +253,7 @@ window.onload = function(){
 		var str = user_message.innerText;
 		var name = str.substring(str.indexOf("\"")+1,str.lastIndexOf("\""));
 		result_game.style.display = "block";
+		//show all game results in the browser as a table
 		controller.showData(name);
 	}
 

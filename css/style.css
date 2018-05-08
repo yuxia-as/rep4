@@ -32,14 +32,22 @@ body{
 	color:red;
 }
 .sign_up{
-	margin:20px 50px 30px 200px;
+	margin:20px auto 30px;
+	padding-top: 20px;
+	width:730px;
+	background-color: #bec7d6;
 	line-height: 25px;
 }
 .sign_up label{
 	display: inline-block;
 	width: 100px;
-	margin: 10px;
+	margin: 10px 10px 10px 100px;
 	text-align: right;
+}
+.sign_up span{
+	margin-left:10px;
+	color:red;
+	display: none;
 }
 .sign_up input{
 	width: 200px;
@@ -49,7 +57,8 @@ body{
 }
 .sign_up input[type="submit"]{
 	width: 100px;
-	margin-left:120px; 
+	margin-top:20px;
+	margin-left:200px; 
 	-webkit-border-radius: 10px;
 	-ms-border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -59,8 +68,8 @@ body{
 }
 .sign_up #user_message{
 	margin-top: 20px;
-	margin-left:50px;
-	height: 30px;
+	margin-left:180px;
+	height: 50px;
 	color:orange;
 	font-size: 20px;
 	font-weight: bold;

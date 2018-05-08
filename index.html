@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>rock scissor paper game</title>
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<!-- [if lte IE 8]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<! [endif] -->
@@ -14,11 +14,13 @@
 			<h2>Rock Scissor Paper Game</h2>
 		</section>
 		<section class="sign_up">
-			<p><label for="">User Name:</label><input type="text" id="name" required></p>
-			<p><label for="">Email:</label><input type="email" id="email" required></p>
-			<p><label for="">Password:</label><input type="Password" id="password" required></p>
-			<input type="submit" value="register" id="register">
-			<p id="user_message"></p>
+			
+				<p><label for="">User Name:</label><input type="text" id="name" autofocus="true"><span id="name_span"></span></p>
+				<p><label for="">Email:</label><input type="email" id="email" ><span id="email_span"></span></p>
+				<p><label for="">Password:</label><input type="Password" id="password"><span id="psd_span"></span></p>
+				<input type="submit" value="register" id="register">
+			
+			<p id="user_message">Please fill up all register area</p>
 		</section>
 			<hr>
 		<section class="game_area">
